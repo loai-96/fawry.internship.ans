@@ -1,0 +1,22 @@
+1- Argument Handling Breakdown ?
+The script handles arguments in several stages:
+. First checks if minimum arguments are present, showing appropriate errors if not
+. Then processes options (-n, -v, -vn, -nv) using a while loop that shifts arguments
+. Verifies the search string and filename are provided after options
+. Checks if the file exists before processing
+. Finally reads the file line by line, applying the search criteria and options
+########################################################################################################
+2-Supporting Additional Features ?
+. To support regex or options like -i (case-sensitive), -c (count), or -l (filenames only):
+. I would add more case statements in the option parsing section
+. For regex, I'd modify the matching logic to use grep -E or awk
+. The script structure would need more variables to track these options
+. Output formatting would need additional conditions to handle counts or just filenames
+. Case sensitivity would require removing the case-insensitive match in the current implementation
+#########################################################################################################
+3- Hardest Part to Implement ?
+The most challenging part was handling the option combinations (-vn, -nv) while maintaining clean code, 
+I initially tried processing each character separately which became messy, 
+The solution was to treat combined options as special cases in the switch statement, 
+This approach keeps the code readable while supporting all required combinations, 
+The inverted match logic also required careful consideration to ensure it worked correctly with line number display.
